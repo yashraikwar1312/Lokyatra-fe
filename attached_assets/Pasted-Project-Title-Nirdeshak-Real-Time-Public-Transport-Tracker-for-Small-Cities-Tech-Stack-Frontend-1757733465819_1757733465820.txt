@@ -1,0 +1,197 @@
+Project Title:
+Nirdeshak – Real-Time Public Transport Tracker for Small Cities
+
+Tech Stack (Frontend):
+React + TailwindCSS + TypeScript
+(Responsive for Web + Mobile)
+
+1. Overall UI Theme
+
+Modern, clean, and smart city feel (use light theme with blue + green accents).
+
+Consistent dashboard layout with sidebar navigation on the left.
+
+Rounded cards, soft shadows, and data highlights for KPIs.
+
+Professional SIH-level look (avoid clutter, focus on readability).
+
+2. Navigation Sidebar (Left Panel)
+
+Icons + Labels for:
+
+Dashboard (home icon)
+
+3D Map (map icon)
+
+Bus/Train Control (bus/train icon)
+
+Passenger Heatmap (users icon)
+
+Alerts & Safety (alert/triangle icon)
+
+AI Recommendations (AI/robot icon)
+
+Analytics & Reports (chart icon)
+
+Maintenance (wrench icon)
+
+Settings (gear icon)
+
+3. Dashboard (Landing Page for Authorities)
+
+Top KPI Cards (grid layout):
+
+🚍 Active Buses: “248 running” (green if increasing).
+
+⏱ Average Delay: “3.4 min” (orange if >5min).
+
+📊 Network Punctuality: “92.5%” (green/red toggle).
+
+⚠️ Critical Alerts: “5” (red if >0).
+
+🌱 CO₂ Saved: “2.4 tons today” (unique sustainability stat).
+
+Main Sections:
+
+Live City Overview:
+
+Map widget (use 3D mock or animated map).
+
+Bus routes + live bus icons moving.
+
+Congestion shown in red/orange/green lines.
+
+Recent Alerts Widget:
+
+E.g., “Bus Breakdown – Route 12, expected delay 15 min.”
+
+AI Recommendation Widget:
+
+E.g., “Deploy extra bus on Route 7 – demand spike detected.”
+
+4. 3D Map Page
+
+Full-width 3D city map view (mock with Mapbox/Three.js style).
+
+Overlays:
+
+Live bus icons with numbers.
+
+Train route overlay (if integrated).
+
+Traffic layers (green = smooth, red = jam).
+
+Passenger-powered GPS dots (small blue circles where passengers reported live location).
+
+Toggle Controls: Traffic Layer | Passenger Heatmap | Incidents
+
+5. Bus/Train Control Page (Operations Center)
+
+Summary Stats at Top:
+
+On Time: 2285 buses
+
+Minor Delays: 47
+
+Critical Issues: 12
+
+Revenue/Usage per Hour
+
+List of Active Vehicles (Table + Cards):
+
+Route No. + Source → Destination
+
+Current Speed (km/h)
+
+Next Stop ETA
+
+Status (On Time / Delayed / Breakdown)
+
+Actions: [Track] [Hold] [Reroute]
+
+6. Passenger Heatmap Page
+
+Heatmap of where commuters are waiting (from passenger GPS).
+
+Red zones = overcrowded stops.
+
+AI Suggestion: “Deploy extra bus on Stop XYZ in next 10 min.”
+
+7. Alerts & Safety Page
+
+Active Alerts List with severity colors:
+
+🚨 Critical: Bus accident, major breakdown.
+
+⚠️ Warning: Road diversion, traffic jam.
+
+ℹ️ Info: Maintenance updates.
+
+Women Safety & SOS Dashboard:
+
+Shows SOS requests (blurred data for privacy).
+
+Live location of active SOS triggers.
+
+Filter Options: Critical | Warning | Info
+
+8. AI Recommendations Page
+
+AI Metrics at Top:
+
+Accuracy %
+
+Decisions per Hour
+
+Efficiency Gain %
+
+Response Time (ms)
+
+Recommendation Cards:
+
+“Reroute Bus 105 → alternate road (reduces delay by 5 min)”
+
+“Hold Bus 202 for 2 min at Stop X (avoids congestion).”
+
+Action Buttons: [Implement ✅] [Decline ❌] [More Details]
+
+9. Analytics & Reports Page
+
+Line Chart: Daily Punctuality Trend.
+
+Bar Chart: Passenger usage per route.
+
+Pie Chart: Breakdown of Alert Categories.
+
+Sustainability Meter: CO₂ saved this week.
+
+10. Commuter-Facing App (Simplified UI for Mobile)
+
+Home Screen:
+
+Nearest Stop (auto-detect).
+
+Live bus ETA (“Bus 12 → Arrives in 4 min”).
+
+3D Mini Map View of bus approaching.
+
+Alternative Routes: Suggests next available bus if delayed.
+
+Safety Button (SOS): One-tap emergency alert.
+
+Gamification: Badge/points for using buses daily.
+
+11. Unique UI Elements (to impress judges)
+
+3D Map & Simulation Mode (not in reference design).
+
+Passenger-Powered GPS Heatmap (crowdsourced tracking).
+
+Sustainability Dashboard (CO₂ savings).
+
+Women Safety SOS Monitoring.
+
+Gamified Commuter Rewards.
+
+📌 Instructions for Generator:
+“Generate a responsive web dashboard in React + TailwindCSS with a sidebar, card-based KPIs, charts, and live map widgets. Include the unique features mentioned (3D map, crowdsourced GPS, CO₂ savings, SOS safety). Design should look modern, clean, and optimized for judges’ presentation in SIH. Avoid copying railway dashboards — make it unique with sustainability + safety focus.”
