@@ -1,0 +1,11 @@
+// ...existing imports...
+type BusTrackerProps = {
+  forcedMode?: string;
+};
+
+export default function BusTracker({ forcedMode }: BusTrackerProps) {
+  // ...existing state...
+  // Replace all setMode("...") with: if (!forcedMode) setMode("...");
+  // And in render, use: const displayMode = forcedMode || mode;
+  // Then use displayMode instead of mode in your JSX
+}

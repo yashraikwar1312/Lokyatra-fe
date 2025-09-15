@@ -1,0 +1,16 @@
+import React, { useState } from "react";
+import DemoSidebar from "./demo-sidebar";
+import BusTracker from "./bus-tracker";
+
+export default function DashboardDemo() {
+  const [mode, setMode] = useState<string>("normal");
+
+  return (
+    <div className="flex h-screen">
+      <DemoSidebar setMode={setMode} currentMode={mode} />
+      <div className="flex-1">
+        <BusTracker forcedMode={mode} />
+      </div>
+    </div>
+  );
+}

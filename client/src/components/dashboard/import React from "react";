@@ -1,0 +1,37 @@
+import React from "react";
+
+type DemoSidebarProps = {
+  setMode: (mode: string) => void;
+  currentMode: string;
+};
+
+export default function DemoSidebar({ setMode, currentMode }: DemoSidebarProps) {
+  const modes = [
+    { key: "normal", label: "Normal (Live Map)" },
+    { key: "lite", label: "Lite (Text Only)" },
+    { key: "offline", label: "Offline (Smartphone)" },
+    { key: "feature", label: "Feature Phone (SMS/IVR)" },
+  ];
+
+  return (
+    <div className="w-60 p-4 bg-gray-100 h-full flex flex-col gap-2">
+      <h2 className="font-bold mb-2">Demo Modes</h2>
+      {modes.map((m) => (
+        <button
+          key={m.key}
+          onClick={() => setMode(m.key)}
+          className={`px-3 py-2 rounded text-left ${
+            currentMode === m.key
+              ? "bg-blue-500 text-white"
+              : "bg-white text-gray-800 border"
+          }`}
+        >
+          {m.label}
+        </button>
+      ))}
+      <div className="mt-6 text-xs text-gray-500">
+        Use these buttons to demo each mode for SIH judges.
+      </div>
+    </div>
+  );
+}
