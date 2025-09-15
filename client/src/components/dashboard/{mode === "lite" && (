@@ -1,0 +1,19 @@
+{mode === "lite" && (
+  <div>
+    <h2 className="text-xl font-bold">Lite Mode (Text Only)</h2>
+    {busData.length > 0 ? (
+      <ul>
+        {busData.map((bus) => (
+          <li key={bus.id}>
+            Bus {bus.id}: ETA {bus.eta}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <ul>
+        <li>Bus 101 → ETA 5 min</li>
+        <li>Bus 102 → ETA 12 min</li>
+      </ul>
+    )}
+  </div>
+)}

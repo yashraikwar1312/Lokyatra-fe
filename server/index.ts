@@ -6,6 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// ✅ Middleware to log API calls
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
@@ -39,6 +40,55 @@ app.use((req, res, next) => {
 (async () => {
   const server = await registerRoutes(app);
 
+  // ✅ Mock SMS endpoint (Twilio/Exotel will hit this)
+  app.post("/sms", (req: Request, res: Response) => {
+    const incomingMsg = (req.body.Body || "").trim().toUpperCase(); // Example: "BUS 101"
+    let reply = "Sorry, I didn’t understand that. Try BUS <id>.";
+
+    if (incomingMsg.startsWith("BUS")) {
+      const busId = incomingMsg.split(" ")[1] || "?";
+      // 🔹 In real system: query bus data from DB/GPS
+      reply = `Bus ${busId} arriving in ~5 minutes.`;
+    }
+
+    // Respond with TwiML XML (Twilio format)
+    res.type("text/xml");
+    res.send(`
+      <Response>
+        <Message>${reply}</Message>
+      </Response>
+    `);
+  });
+
+  // ✅ Mock IVR endpoint
+  app.post("/ivr", (_req: Request, res: Response) => {
+    res.type("text/xml");
+    res.send(`
+      <Response>
+        <Gather numDigits="1" action="/ivr/handle" method="POST">
+          <Say>Welcome to LokYatra. Press 1 for Bus 101 ETA. Press 2 for Bus 102 ETA.</Say>
+        </Gather>
+      </Response>
+    `);
+  });
+
+  app.post("/ivr/handle", (req: Request, res: Response) => {
+    const digit = req.body.Digits;
+    let message = "Sorry, invalid choice.";
+
+    if (digit === "1") message = "Bus 101 arriving in 5 minutes.";
+    if (digit === "2") message = "Bus 102 arriving in 12 minutes.";
+
+    res.type("text/xml");
+    res.send(`
+      <Response>
+        <Say>${message}</Say>
+        <Hangup/>
+      </Response>
+    `);
+  });
+
+  // ✅ Global error handler
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
@@ -47,25 +97,23 @@ app.use((req, res, next) => {
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
+  // ✅ Setup Vite only in dev
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
-  });
+  // ✅ Use environment port
+  const port = parseInt(process.env.PORT || "5000", 10);
+  server.listen(
+    {
+      port,
+      host: "0.0.0.0",
+      reusePort: true,
+    },
+    () => {
+      log(`serving on port ${port}`);
+    }
+  );
 })();
