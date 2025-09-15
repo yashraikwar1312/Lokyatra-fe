@@ -83,8 +83,42 @@ export function AiRecommendationsWidget() {
       </CardHeader>
       <CardContent>
         {topRecommendations.length === 0 ? (
-          <div className="text-center py-8 text-muted-foreground">
-            No pending recommendations
+          <div className="space-y-4">
+            <div className="mb-2 p-3 rounded border bg-yellow-50">
+              <div className="font-semibold">🚌 Optimize Route 101</div>
+              <div className="text-xs text-gray-600">
+                AI suggests reducing wait time at Stop 3 by 2 minutes to improve punctuality.
+              </div>
+              <div className="mt-1 text-xs text-blue-600">Priority: High</div>
+            </div>
+            <div className="mb-2 p-3 rounded border bg-green-50">
+              <div className="font-semibold">📈 Add Express Service</div>
+              <div className="text-xs text-gray-600">
+                Launch an express bus between City Center and Tech Park during peak hours for 20% faster commute.
+              </div>
+              <div className="mt-1 text-xs text-green-600">Priority: Medium</div>
+            </div>
+            <div className="mb-2 p-3 rounded border bg-blue-50">
+              <div className="font-semibold">🔔 Notify Delays</div>
+              <div className="text-xs text-gray-600">
+                Enable push notifications for real-time delay alerts to commuters.
+              </div>
+              <div className="mt-1 text-xs text-blue-600">Priority: Low</div>
+            </div>
+            <div className="mb-2 p-3 rounded border bg-purple-50">
+              <div className="font-semibold">🗺️ Dynamic Route Adjustment</div>
+              <div className="text-xs text-gray-600">
+                AI recommends rerouting Bus 102 during peak hours to avoid construction zones and reduce delays.
+              </div>
+              <div className="mt-1 text-xs text-purple-600">Priority: High</div>
+            </div>
+            <div className="mb-2 p-3 rounded border bg-pink-50">
+              <div className="font-semibold">🌡️ AC Usage Optimization</div>
+              <div className="text-xs text-gray-600">
+                Reduce AC usage on low-occupancy buses to save energy and operational costs.
+              </div>
+              <div className="mt-1 text-xs text-pink-600">Priority: Medium</div>
+            </div>
           </div>
         ) : (
           <div className="space-y-4">
